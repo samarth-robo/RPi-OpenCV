@@ -1,0 +1,20 @@
+This code is a OpenCV 2.x C++ wrapper to low-level C code, for accessing the I420 encoded video stream from the Raspberry Pi's camera module.
+
+To compile:
+
+1. Install OpenCV 2.x and make sure proper environment variables are set 
+2. Enable RPi camera module support from raspi-config
+3. Clone the userland GitHub repository (https://github.com/raspberrypi/userland)
+4. Modify line 13 of CMakeLists.txt (of this repository) and replace USERLAND_DIR with the path to the cloned userland repository
+5. In this repository, run:
+  mkdir build
+  cd build
+  cmake ..
+  make
+  ./test
+
+Because of the way the wrapper is written, grayscale video streams much faster than color video.
+
+The OpenCV time measurement routines are interfered with in some way by the low level C code, and so the frame rates displayed by the test program might be inaccurate.
+
+Author: Samarth Manoj Brahmbhatt, with low level code by Tasanakorn
